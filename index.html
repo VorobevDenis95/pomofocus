@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+                <section class="timer">
+                    <nav class="nav-timer">
+                        <button id='pomodoro' class="btn__nav-timer btn__pomodoro active">Pomodoro</button>
+                        <button id='shortBreak' class="btn__nav-timer btn__shortBreak">Short Break</button>
+                        <button id='longBreak' class="btn__nav-timer btn__longBreak">Long Break</button>
+                    </nav>
+                    <div class="time">
+                        <span id="minutes"></span>
+                        <span></span>
+                        <span id="seconds"></span>
+                    </div>
+                    <button data-name='start' class="btn__start-stop">Start</button>
+                </section>
+          
+    </div>
+
+    <script src="index.js" defer="defer" type="module"></script>
+</body>
+</html>
