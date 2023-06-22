@@ -6,7 +6,7 @@ const seconds = document.querySelector("#seconds");
 
 class Timer {
   constructor() {
-    (this.pomodoro = 15),
+    (this.pomodoro = 25),
       (this.modeStatus = "pomodoro"),
       (this.shortBreak = 5),
       (this.longBreak = 15),
