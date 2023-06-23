@@ -29,10 +29,10 @@ class Timer {
   }
   updateTime() {
     if (this.remaningTime.total === 0) {
-      this.btnStartStatus = true;
       this.renameStartStop();
       this.stopTime();
       this.nextSwitch();
+      return;
     }
 
     this.remaningTime.total = this.remaningTime.total - 1;
@@ -62,6 +62,12 @@ class Timer {
         this.intervalMode = 0;
         this.removeClass();
         document.querySelector("#longBreak").classList.add("active");
+        this.displayTime();
+        page.style.backgroundColor = `var(--longBreak)`;
+        btnStartStop.style.color = `var(--longBreak)`;
+        this.switchMode();
+        // console.log(time.intervalMode)
+        return;
       }
       this.removeClass();
       this.modeStatus = "shortBreak";
@@ -79,6 +85,8 @@ class Timer {
       this.switchMode();
       this.removeClass();
       document.querySelector("#pomodoro").classList.add("active");
+      this.displayTime();
+      return;
     } else if (this.modeStatus === "longBreak") {
       this.switchMode();
       this.modeStatus = "pomodoro";
@@ -86,11 +94,13 @@ class Timer {
       page.style.backgroundColor = `var(--longBreak)`;
       btnStartStop.style.color = `var(--longBreak)`;
       document.querySelector("#pomodoro").classList.add("active");
+      this.displayTime();
+      return;
     }
     this.switchMode();
-    this.remaningTime.total = this.remaningTime.total + 1;
+    // this.remaningTime.total = this.remaningTime.total + 1;
     this.displayTime();
-    document.querySelector(".btn__start-stop").textContent = "1";
+    console.log(time.intervalMode);
   }
 
   removeClass() {
@@ -126,6 +136,8 @@ btnsMode.forEach((item) => {
 
 btnStartStop.addEventListener("click", () => {
   if (time.btnStartStatus) {
+    time.btnStartStatus = true;
+    clearInterval(time.intervalId);
     time.intervalId = setInterval((e) => {
       time.updateTime();
     }, 1000);
